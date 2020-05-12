@@ -12,7 +12,7 @@ type IProps = {
   tableData: ITableDataSet<IColumn>;
 };
 const initialSortState = {
-  columnIndex: -1,
+  columnId: -1,
   sortOrder: ISortDirection.ASC,
 };
 const stopAnimationAfterNrows = 10
@@ -42,31 +42,34 @@ const Table = ({ tableData }: IProps) => {
   const handleColumnClick = (columnId: number): void => {
     setSortState((sortState) => {
       const stateClone = { ...sortState };
-      if (stateClone.columnIndex === columnId && stateClone.sortOrder === ISortDirection.ASC) {
+      if (stateClone.columnId === columnId && stateClone.sortOrder === ISortDirection.ASC) {
         stateClone.sortOrder = ISortDirection.DESC;
       } else {
         stateClone.sortOrder = ISortDirection.ASC;
       }
-      stateClone.columnIndex = columnId;
+      stateClone.columnId = columnId;
       return stateClone;
     });
   };
   // set new order and trigger animation
   useEffect(() => {
-    if (sortState.columnIndex > -1) {
+    if (sortState.columnId > -1) {
       setAnimationStep(0);
-      setState((state) => ({
-        ...state,
-        rows: state.rows
-          .concat()
-          .sort(
-            (rowA, rowB) =>
-              (sortState.sortOrder === ISortDirection.ASC ? 1 : -1) *
-              rowA.values[sortState.columnIndex].localeCompare(
-                rowB.values[sortState.columnIndex]
-              )
-          ),
-      }));
+      setState((state) => {
+        const currentIndex = state.columns.findIndex(
+          (column) => column.columnId === sortState.columnId
+        );
+        return {
+          ...state,
+          rows: state.rows
+            .concat()
+            .sort(
+              (rowA, rowB) =>
+                (sortState.sortOrder === ISortDirection.ASC ? 1 : -1) *
+                rowA.values[currentIndex].localeCompare(rowB.values[currentIndex])
+            ),
+        };
+      });
     }
   }, [sortState]);
   // animate

@@ -52,8 +52,8 @@ const Thead = ({
           <TheadCell
             key={`${tableId}-${column.columnId}}`}
             columnName={column.name}
-            clickHandler={() => handleColumnClick(columnIndex)}
-            sortDirection={sortState.columnIndex === columnIndex ? sortState.sortOrder : null}
+            clickHandler={() => handleColumnClick(column.columnId)}
+            sortDirection={sortState.columnId === column.columnId ? sortState.sortOrder : null}
             width={column.width}
             isSpecial={columnIndex === specialColumnIndex}
           />

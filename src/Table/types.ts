@@ -4,7 +4,7 @@ export enum ISortDirection {
 }
 
 export type ISortState = {
-  columnIndex: number;
+  columnId: number;
   sortOrder: ISortDirection;
 };
 
