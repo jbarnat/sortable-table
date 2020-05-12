@@ -6,6 +6,10 @@
 - react
 - styled components
 
+### Demo
+
+[barnat.net/portfolio/sortable-table](https://www.barnat.net/portfolio/sortable-table/)
+
 ### How to run
 
 ```bash
