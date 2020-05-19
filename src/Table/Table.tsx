@@ -4,7 +4,7 @@ import debounce from "lodash/debounce";
 import Tbody from "./TBody";
 import Thead from "./THead";
 
-import { moveItemWithinArray, sleep } from "../shared/typescript";
+import { moveItemWithinArray, sleep } from "shared/typescript";
 import { ITableDataSet, IColumn, ISortState, ISortDirection } from "./types";
 import { StyledTable } from "./Styles";
 

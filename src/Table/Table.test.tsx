@@ -1,4 +1,4 @@
-import { moveItemWithinArray } from "../shared/typescript";
+import { moveItemWithinArray } from "shared/typescript";
 
 test("moveItemWithinArray", () => {
   const start = [0, 1, 2, 3, 4];

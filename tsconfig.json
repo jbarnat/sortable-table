@@ -18,7 +18,8 @@
     "jsx": "react",
     "isolatedModules": true,
     "downlevelIteration": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "src"
   },
   "include": [
     "src"
