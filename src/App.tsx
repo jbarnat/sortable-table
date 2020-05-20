@@ -4,10 +4,10 @@ import styled from "styled-components";
 import Table from "./Table/";
 import Button from "./shared/Button";
 
-import { ITableDataSet, IColumn } from "./Table/types";
+import { TableDataSet, Column } from "./Table/types";
 
-type IProps = {
-  tables: ITableDataSet<IColumn>[];
+type AppProps = {
+  tables: TableDataSet<Column>[];
 };
 
 const StyledAppHeader = styled.div`
@@ -17,8 +17,8 @@ const StyledAppHeader = styled.div`
   }
 `;
 
-function App({ tables }: IProps) {
-  const [currentTable, openTable] = useState<ITableDataSet<IColumn>>(tables[0]);
+function App({ tables }: AppProps) {
+  const [currentTable, openTable] = useState<TableDataSet<Column>>(tables[0]);
   return (
     <div className="App">
       <StyledAppHeader className="App-header">

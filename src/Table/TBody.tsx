@@ -1,17 +1,17 @@
 import React from "react";
 import { StyledTd, StyledTr } from "./Styles";
 
-import { IRow } from "./types";
+import { Row } from "./types";
 
 
-type IProps = {
-  rows: IRow[];
+type TbodyProps = {
+  rows: Row[];
   specialColumnIndex: number;
   tableId: number;
   animationStep: number;
 };
 
-const Tbody = ({ rows, specialColumnIndex, tableId, animationStep }: IProps) => {
+const Tbody = ({ rows, specialColumnIndex, tableId, animationStep }: TbodyProps) => {
   return (
     <tbody>
       {rows.map((row, rowIndex) => (

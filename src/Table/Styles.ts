@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ISortDirection } from "./types";
+import { SortDirection } from "./types";
 
 // TABLE
 export const StyledTableContainer = styled.div`
@@ -19,7 +19,7 @@ export const StyledTHeadTr = styled.tr`
 `;
 
 export const StyledTh = styled.th<{
-  sortDirection: ISortDirection | null;
+  sortDirection: SortDirection | null;
   isSpecial: boolean;
   width: number;
 }>`
@@ -30,9 +30,9 @@ export const StyledTh = styled.th<{
   border-bottom: 3px solid purple;
   padding: 0em 1.9em;
   color: ${(props) =>
-    props.sortDirection === ISortDirection.ASC
+    props.sortDirection === SortDirection.ASC
       ? "blue"
-      : props.sortDirection === ISortDirection.DESC
+      : props.sortDirection === SortDirection.DESC
       ? "red"
       : "black"};
   :hover {

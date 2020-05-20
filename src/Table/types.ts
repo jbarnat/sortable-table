@@ -1,28 +1,28 @@
-export enum ISortDirection {
+export enum SortDirection {
   ASC = "asc",
   DESC = "desc",
 }
 
-export type ISortState = {
+export type SortState = {
   columnId: number;
-  sortOrder: ISortDirection;
+  sortOrder: SortDirection;
 };
 
-export type IRow = {
+export type Row = {
   rowId: number;
   values: string[];
 };
 
-export type IColumn = {
+export type Column = {
   columnId: number;
   width: number;
   name: string;
 };
 
-export type ITableDataSet<T> = {
+export type TableDataSet<T> = {
   tableId: number;
   tableName: string;
   columns: T[];
-  rows: IRow[];
+  rows: Row[];
   total: number;
 };

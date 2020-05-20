@@ -1,21 +1,21 @@
 import React from "react";
-import { IColumn, ISortState, ISortDirection } from "./types";
+import { Column, SortState, SortDirection } from "./types";
 import { StyledTh, StyledTHeadTr, StyledSortDirection } from "./Styles";
 
-type IPropsTHead = {
+type TheadProps = {
   tableId: number;
-  columns: IColumn[];
+  columns: Column[];
   specialColumnIndex: number;
-  sortState: ISortState;
+  sortState: SortState;
   handleColumnClick: (columneId: number) => void;
   setLastRowElement: (element: HTMLTableRowElement) => void;
 };
 
-type IPropsTh = {
+type TheadCellProps = {
   columnName: string;
   width: number;
   isSpecial: boolean;
-  sortDirection: ISortDirection | null;
+  sortDirection: SortDirection | null;
   clickHandler: () => void;
 };
 
@@ -25,7 +25,7 @@ const TheadCell = ({
   sortDirection,
   isSpecial,
   width,
-}: IPropsTh) => {
+}: TheadCellProps) => {
   return (
     <StyledTh sortDirection={sortDirection} onClick={clickHandler} isSpecial={isSpecial} width={width}>
       {columnName}
@@ -41,7 +41,7 @@ const Thead = ({
   setLastRowElement,
   tableId,
   sortState,
-}: IPropsTHead) => {
+}: TheadProps) => {
   return (
     <thead>
       <StyledTHeadTr

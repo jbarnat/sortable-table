@@ -14,12 +14,12 @@ const StyledButton = styled.div<{ active: boolean }>`
   }
 `;
 
-type IProps = {
+type ButtonProps = {
   label: string;
   onClick: () => void;
   active: boolean;
 };
-const Button = ({ label, onClick, active }: IProps) => (
+const Button = ({ label, onClick, active }: ButtonProps) => (
   <StyledButton onClick={onClick} active={active}>
     {label}
   </StyledButton>

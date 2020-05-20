@@ -5,26 +5,26 @@ import Tbody from "./TBody";
 import Thead from "./THead";
 
 import { moveItemWithinArray, sleep } from "shared/typescript";
-import { ITableDataSet, IColumn, ISortState, ISortDirection } from "./types";
+import { TableDataSet, Column, SortState, SortDirection } from "./types";
 import { StyledTable } from "./Styles";
 
-type IProps = {
-  tableData: ITableDataSet<IColumn>;
+type TableProps = {
+  tableData: TableDataSet<Column>;
 };
 const initialSortState = {
   columnId: -1,
-  sortOrder: ISortDirection.ASC,
+  sortOrder: SortDirection.ASC,
 };
 const stopAnimationAfterNrows = 10
 const specialColumnMoveDelay = 200
 
-const Table = ({ tableData }: IProps) => {
+const Table = ({ tableData }: TableProps) => {
   const [state, setState] = useState({
     columns: tableData.columns,
     rows: tableData.rows,
     specialColumnIndex: tableData.columns.length - 1,
   });
-  const [sortState, setSortState] = useState<ISortState>(initialSortState);
+  const [sortState, setSortState] = useState<SortState>(initialSortState);
   const [animationStep, setAnimationStep] = useState(stopAnimationAfterNrows);
   const [lastRowElement, setLastRowElement] = useState<HTMLTableRowElement | null>(null);
 
@@ -42,10 +42,10 @@ const Table = ({ tableData }: IProps) => {
   const handleColumnClick = (columnId: number): void => {
     setSortState((sortState) => {
       const stateClone = { ...sortState };
-      if (stateClone.columnId === columnId && stateClone.sortOrder === ISortDirection.ASC) {
-        stateClone.sortOrder = ISortDirection.DESC;
+      if (stateClone.columnId === columnId && stateClone.sortOrder === SortDirection.ASC) {
+        stateClone.sortOrder = SortDirection.DESC;
       } else {
-        stateClone.sortOrder = ISortDirection.ASC;
+        stateClone.sortOrder = SortDirection.ASC;
       }
       stateClone.columnId = columnId;
       return stateClone;
@@ -65,7 +65,7 @@ const Table = ({ tableData }: IProps) => {
             .concat()
             .sort(
               (rowA, rowB) =>
-                (sortState.sortOrder === ISortDirection.ASC ? 1 : -1) *
+                (sortState.sortOrder === SortDirection.ASC ? 1 : -1) *
                 rowA.values[currentIndex].localeCompare(rowB.values[currentIndex])
             ),
         };
