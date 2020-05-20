@@ -1,5 +1,5 @@
 import React from "react";
-import { Column, SortState, SortDirection } from "./types";
+import { Column, SortState, SortDirection } from "Table/types";
 import { StyledTh, StyledTHeadTr, StyledSortDirection } from "./Styles";
 
 type TheadProps = {

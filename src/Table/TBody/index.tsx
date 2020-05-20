@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledTd, StyledTr } from "./Styles";
 
-import { Row } from "./types";
+import { Row } from "Table/types";
 
 
 type TbodyProps = {

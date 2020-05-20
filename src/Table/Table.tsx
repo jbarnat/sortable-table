@@ -15,8 +15,8 @@ const initialSortState = {
   columnId: -1,
   sortOrder: SortDirection.ASC,
 };
-const stopAnimationAfterNrows = 10
-const specialColumnMoveDelay = 200
+const stopAnimationAfterNrows = 10;
+const specialColumnMoveDelay = 200;
 
 const Table = ({ tableData }: TableProps) => {
   const [state, setState] = useState({
