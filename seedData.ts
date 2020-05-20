@@ -1,15 +1,27 @@
 import { writeFileSync } from "fs";
 import faker from "faker";
 
-import { IColumn, ITableDataSet } from "./src/Table/types";
+import { Column, TableDataSet } from "./src/Table/types";
 
-type IColumnMeta = {
+type ColumnMeta = {
   width: number;
   name: string;
   generatorFn: () => string;
 };
 
-const dataSetCollection: ITableDataSet<IColumnMeta>[] = [
+const dataSetCollection: TableDataSet<ColumnMeta>[] = [
+  {
+    tableName: "Small Table",
+    tableId: 1,
+    columns: [
+      { width: 5, name: "Country Code", generatorFn: faker.address.countryCode },
+      { width: 20, name: "Country", generatorFn: faker.address.country },
+      { width: 20, name: "City", generatorFn: faker.address.city },
+      { width: 5, name: "price", generatorFn: faker.commerce.price },
+    ],
+    rows: [],
+    total: 30,
+  },
   {
     tableName: "Green table",
     tableId: 1,
@@ -91,8 +103,8 @@ const dataSetCollection: ITableDataSet<IColumnMeta>[] = [
 ];
 
 function transformMetaIntoData(
-  dataSetCollection: ITableDataSet<IColumnMeta>[]
-): ITableDataSet<IColumn>[] {
+  dataSetCollection: TableDataSet<ColumnMeta>[]
+): TableDataSet<Column>[] {
   return dataSetCollection.map(({ total, columns, tableName, tableId }) => ({
     tableId,
     tableName,
